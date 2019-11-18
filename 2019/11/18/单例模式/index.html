@@ -17,7 +17,7 @@
 <meta property="og:description" content="单例模式是设计模式中使用最多的模式之一，它是一种对象的创建模式，用于产生一个对象的实例，确保系统中一个类只有一个实例。在Java语言中，单例模式有以下好处：  对于频繁使用的对象，单例省略了创建对象的时间，对于重量级对象而言，极大减少了系统开销。 由于new的次数减少，因此减少了系统对内存的使用频次，减轻了GC压力，缩短了GC停顿时间。  因此对于系统的关键组件和频繁使用的对象，可以设计为单例模式">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;2&#x2F;26&#x2F;1692853206af2e6e?imageView2&#x2F;0&#x2F;w&#x2F;1280&#x2F;h&#x2F;960&#x2F;format&#x2F;webp&#x2F;ignore-error&#x2F;1">
-<meta property="og:updated_time" content="2019-11-18T11:59:15.170Z">
+<meta property="og:updated_time" content="2019-11-18T12:08:46.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;2&#x2F;26&#x2F;1692853206af2e6e?imageView2&#x2F;0&#x2F;w&#x2F;1280&#x2F;h&#x2F;960&#x2F;format&#x2F;webp&#x2F;ignore-error&#x2F;1">
   
@@ -197,6 +197,7 @@
 
 <p>​    <strong>原理：在这个实现中，使用内部类来维护单例实例，当StaticSingleton被加载的时候，内部类没有被初始化，可以确保StaticSingleton加载到JVM中，不会初始化单例类，当调用getInstance()时才会加载StaticSingleHolder，初始化instance对象，同时由于实例的建立是在类加载时完成的，对线程友好，getInstance()不需要使用同步关键字。</strong></p>
 <p>​    <strong>注意：使用内部类实现的单例，既可以实现延时加载也避免使用同步关键字，是比较完善的实现。但是如果通过反射机制强行调用私有构造方法，就会生成多个单例。同时序列化和反序列化可能破坏单例(饿汉代码readResolve()方法)，场景不多见，如果存在，多加注意。</strong></p>
+<p> 参考：《Java性能程序优化 让你的Java程序更快、更稳定 》 葛一鸣 </p>
 
       
 
