@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 人生点滴</title>
+  <title>Integer面试题 | 人生点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="人生点滴">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="Integer面试题Integer是Java常用类，关于它的面试题层出不穷，在这里总结一下。">
+<meta name="keywords" content="&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Integer面试题">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;Integer%E7%9B%B8%E5%85%B3&#x2F;index.html">
 <meta property="og:site_name" content="人生点滴">
-<meta property="og:description" content="技术成长">
+<meta property="og:description" content="Integer面试题Integer是Java常用类，关于它的面试题层出不穷，在这里总结一下。">
 <meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-11-18T10:45:21.481Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="人生点滴" type="application/atom+xml">
@@ -131,36 +133,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Integer相关" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/Integer%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2019-11-18T10:43:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/Integer%E7%9B%B8%E5%85%B3/">Integer面试题</a>
+    <h1 class="article-title" itemprop="name">
+      Integer面试题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/11/18/Integer%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2019-11-18T10:43:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Integer面试题"><a href="#Integer面试题" class="headerlink" title="Integer面试题"></a>Integer面试题</h1><p>Integer是Java常用类，关于它的面试题层出不穷，在这里总结一下。</p>
+<a id="more"></a> 
+
+<h2 id="1-Integer和int的区别和联系？"><a href="#1-Integer和int的区别和联系？" class="headerlink" title="1. Integer和int的区别和联系？"></a>1. Integer和int的区别和联系？</h2><ul>
+<li>int是基本数据类型，缺省值为0，占内存4个字节，32bit。</li>
+<li>Integer是引用类型，缺省值为null。</li>
+<li>Integer和int之间相互转换存在自动拆装箱的过程。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Integer a = 200;</span><br><span class="line">    Integer b = 200;</span><br><span class="line">    System.out.println(a == b);</span><br><span class="line">    System.out.println(a.equals(b));</span><br><span class="line">&#125;</span><br><span class="line">上述程序默认执行的结果:</span><br><span class="line">false</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<p>Integer默认的数字缓存区间为-128~127[a]，当数字在这个区间的时候，Integer a = 200;直接从<code>IntegerCache</code>中读取数据，不会创建新的对象（类似于字符串常量池），如果超出这个区间[a]就会构造新的Integer对象。”==”是引用比较，”equals”是对象的值比较（Integer重写了equals方法），a,b是不同的对象，==比较为false,他们的值相同都为200，equals为true。</p>
+<p><strong>特例</strong>：上述执行程序可能会有相反的结果，<code>System.out.println(a == b)</code>也可能为true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解析：</span><br><span class="line">可以通过修改JVM启动参数修改IntegerCache上限（-XX:AutoBoxCacheMax=250），Java进程启动时，会加载rt.jar这个核心包，rt.jat里面的Integer自然也被加载到JVM中，Integer中有个IntegerCache缓存，描述如下： </span><br><span class="line">	IntegerCache有一个静态代码块，JVM在加载这个类的时候会优先加载静态代码块。当JVM进程启动完毕后-128~127之间的数字就会被缓存起来，调用valueOf方法的时候，如果是在这个区间的数字直接从缓存中取，超过这个范围就只能构造新的Integer对象。</span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<ul>
+<li>使用Oracle/Sun JDK 6,在server模式下，使用<code>-XX:AutoBoxCacheMax=NNN</code>参数即可将Integer的自动缓存区间设置为[-128,NNN]，下边界固定为-128，不可配置。</li>
+<li>在设置了<code>-XX:+AggressiveOpts</code>启动参数后，<code>AutoBoxCacheMax</code>的默认值会被修改为20000并且生效。</li>
+</ul>
+<p>这篇文章主要是记录第二个面试，顺便回忆一下Integer和int的区别。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -172,84 +193,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/18/Integer%E7%9B%B8%E5%85%B3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/26/%E7%9F%A5%E8%AF%86%E7%B4%A2%E5%BC%95/" class="archive-article-date">
-  	<time datetime="2019-10-26T09:28:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/26/%E7%9F%A5%E8%AF%86%E7%B4%A2%E5%BC%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">知识索引</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/26/%E7%9F%A5%E8%AF%86%E7%B4%A2%E5%BC%95/">知识索引</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-10-26T09:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/26/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">深入理解Java虚拟机读书笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -272,8 +315,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
