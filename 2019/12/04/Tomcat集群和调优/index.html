@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Tomcat集群和调优 | 人生点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. Tomcat集群1.1 简介 由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。  集群的好处：  可伸缩性。由于集群中的服务器提供相同的功能服务，所以随着业务量的增加，可以很容易横向扩展，提高集群处理能力。负载均衡会按照指定策略将请求合理的分发到各个服务器进行处理，并且对客户端是透明的。  高可用性。由于">
+  <meta name="description" content="1. Tomcat集群1.1 简介 由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat集群和调优">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;04&#x2F;Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98&#x2F;index.html">
 <meta property="og:site_name" content="人生点滴">
-<meta property="og:description" content="1. Tomcat集群1.1 简介 由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。  集群的好处：  可伸缩性。由于集群中的服务器提供相同的功能服务，所以随着业务量的增加，可以很容易横向扩展，提高集群处理能力。负载均衡会按照指定策略将请求合理的分发到各个服务器进行处理，并且对客户端是透明的。  高可用性。由于">
+<meta property="og:description" content="1. Tomcat集群1.1 简介 由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;gnng&#x2F;bookList&#x2F;blob&#x2F;master&#x2F;image&#x2F;tomcat%E7%9B%B8%E5%85%B3&#x2F;SSO.png?raw=true">
-<meta property="og:updated_time" content="2019-12-04T11:44:51.445Z">
+<meta property="og:updated_time" content="2019-12-04T11:46:37.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;gnng&#x2F;bookList&#x2F;blob&#x2F;master&#x2F;image&#x2F;tomcat%E7%9B%B8%E5%85%B3&#x2F;SSO.png?raw=true">
   
@@ -157,6 +157,7 @@
       
         <h1 id="1-Tomcat集群"><a href="#1-Tomcat集群" class="headerlink" title="1. Tomcat集群"></a>1. Tomcat集群</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><ul>
 <li><p>由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。</p>
+<a id="more"></a> 
 </li>
 <li><p>集群的好处：</p>
 <ul>
@@ -177,8 +178,6 @@
 <p>……</p>
 </li>
 </ul>
-<a id="more"></a> 
-
 </li>
 </ul>
 <h2 id="1-2-环境配置"><a href="#1-2-环境配置" class="headerlink" title="1.2 环境配置"></a>1.2 环境配置</h2><p>​    <em>本文采用Nginx + Tomcat集群的部署方式，Nginx环境自行搭建</em></p>
