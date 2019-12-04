@@ -133,6 +133,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="poost-Tomcat集群和调优" class="article article-type-poost  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/">Tomcat集群和调优</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/" class="archive-article-date">
+  	<time datetime="2019-12-04T11:43:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-Tomcat集群"><a href="#1-Tomcat集群" class="headerlink" title="1. Tomcat集群"></a>1. Tomcat集群</h1><h2 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h2><ul>
+<li><p>由于单台Tomcat服务器的承受能力有限，当业务系统用户量较大，请求压力比较大时，单台Tomcat扛不住，这时需要搭建Tomcat集群。</p>
+</li>
+<li><p>集群的好处：</p>
+<ul>
+<li><p>可伸缩性。由于集群中的服务器提供相同的功能服务，所以随着业务量的增加，可以很容易横向扩展，提高集群处理能力。负载均衡会按照指定策略将请求合理的分发到各个服务器进行处理，并且对客户端是透明的。</p>
+</li>
+<li><p>高可用性。由于服务是由一组服务器共同提供的，当一台服务器出现异常，系统整体功能不会受到影响。</p>
+</li>
+<li><p>高性能。在集群环境下，负载均衡策略会将客户端请求合理的分配到各个服务器，降低了单台服务器的处理数量，提高了处理性能。</p>
+<p><strong>注意：</strong>虽然集群可以支持三高，但是它的引入增加了系统的复杂度，它要求应用服务器提供相关的管理、同步等功能。</p>
+</li>
+</ul>
+</li>
+<li><p>常见的集群部署方式：</p>
+<ul>
+<li><p>Apache + Tomcat集群</p>
+</li>
+<li><p>Nginx + Tomcat集群</p>
+<p>……</p>
+</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/">Read All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="poost-Tomcat总结" class="article article-type-poost  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
