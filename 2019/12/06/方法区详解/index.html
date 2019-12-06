@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 设计模式 | 人生点滴</title>
+  <title>方法区详解 | 人生点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="人生点滴">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&#x2F;index.html">
+  <meta name="description" content="三思而后行，思危、思退、思变。 1. 方法区1.1 概念 方法区里面的数据对线程共享。  它存储每个类的结构，如运行时常量池、字段和方法数据，以及方法和构造函数的代码，包括在类和实例初始化以及接口初始化中使用的特殊方法。  方法区在JVM启动时创建，在逻辑上是堆的一部分，但是虚拟机实现中可以不对该区域进行垃圾回收和内存压缩。  方法区可以是固定大小，也可以通过参数进行配置，内存可以是不连续的。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="方法区详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;06&#x2F;%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="人生点滴">
-<meta property="og:description" content="技术成长">
+<meta property="og:description" content="三思而后行，思危、思退、思变。 1. 方法区1.1 概念 方法区里面的数据对线程共享。  它存储每个类的结构，如运行时常量池、字段和方法数据，以及方法和构造函数的代码，包括在类和实例初始化以及接口初始化中使用的特殊方法。  方法区在JVM启动时创建，在逻辑上是堆的一部分，但是虚拟机实现中可以不对该区域进行垃圾回收和内存压缩。  方法区可以是固定大小，也可以通过参数进行配置，内存可以是不连续的。">
 <meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-12-06T02:55:36.132Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="人生点滴" type="application/atom+xml">
@@ -131,60 +133,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-方法区详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2019-11-18T11:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
+    <h1 class="article-title" itemprop="name">
+      方法区详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/06/%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2019-12-06T02:54:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>三思而后行，思危、思退、思变。</p>
+<h1 id="1-方法区"><a href="#1-方法区" class="headerlink" title="1. 方法区"></a>1. 方法区</h1><h2 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h2><ul>
+<li><p>方法区里面的数据对线程共享。</p>
+</li>
+<li><p>它存储每个类的结构，如运行时常量池、字段和方法数据，以及方法和构造函数的代码，包括在类和实例初始化以及接口初始化中使用的特殊方法。</p>
+</li>
+<li><p>方法区在JVM启动时创建，在逻辑上是堆的一部分，但是虚拟机实现中可以不对该区域进行垃圾回收和内存压缩。</p>
+</li>
+<li><p>方法区可以是固定大小，也可以通过参数进行配置，内存可以是不连续的。</p>
+</li>
+<li><p>如果方法区的内存不能满足内存分配请求，会发生OOM。</p>
+<a id="more"></a> 
+
+</li>
+</ul>
+<h2 id="1-2-JDK的区别"><a href="#1-2-JDK的区别" class="headerlink" title="1.2 JDK的区别"></a>1.2 JDK的区别</h2><ul>
+<li>方法区是一个概念，JDK1.6是<code>PermGen</code>（永久代）的实现，是JVM内存中独立的一块区域（逻辑上堆的一部分）。</li>
+<li>JDK1.8是<code>Metaspace</code>（元空间）的实现，是系统内存的一部分，但是运行时常量池中的<code>StreingTable</code>在堆中。</li>
+</ul>
+<h2 id="1-3-方法区内存溢出"><a href="#1-3-方法区内存溢出" class="headerlink" title="1.3 方法区内存溢出"></a>1.3 方法区内存溢出</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1_8</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123; <span class="comment">// 可以用来加载类的二进制字节码</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Demo1_8 test = <span class="keyword">new</span> Demo1_8();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++, j++) &#123;</span><br><span class="line">                <span class="comment">// ClassWriter 作用是生成类的二进制字节码</span></span><br><span class="line">                ClassWriter cw = <span class="keyword">new</span> ClassWriter(<span class="number">0</span>);</span><br><span class="line">                <span class="comment">// 版本号， public， 类名, 包名, 父类， 接口</span></span><br><span class="line">                cw.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC, <span class="string">"Class"</span> + i, <span class="keyword">null</span>, <span class="string">"java/lang/Object"</span>, <span class="keyword">null</span>);</span><br><span class="line">                <span class="comment">// 返回 byte[]</span></span><br><span class="line">                <span class="keyword">byte</span>[] code = cw.toByteArray();</span><br><span class="line">                <span class="comment">// 执行了类的加载</span></span><br><span class="line">                test.defineClass(<span class="string">"Class"</span> + i, code, <span class="number">0</span>, code.length); <span class="comment">// Class 对象</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JDK1.6<ul>
+<li>演示永久代内存溢出 <code>java.lang.OutOfMemoryError: PermGen space</code></li>
+<li><code>-XX:MaxPermSize=8m</code></li>
+</ul>
+</li>
+<li>JDK1.8<ul>
+<li>演示元空间内存溢出<code>java.lang.OutOfMemoryError: Metaspace</code></li>
+<li><code>-XX:MaxMetaspaceSize=8m</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="2-运行时常量池"><a href="#2-运行时常量池" class="headerlink" title="2. 运行时常量池"></a>2. 运行时常量池</h1><ul>
+<li>常量池就是一张表，虚拟机指令根据这张常量池表找到要执行的类名、方法名、参数类型、字面量等信息。</li>
+<li>运行时常量池，常量池是<em>.class文件中，当类被加载后，它的常量池信息就会放入运行时常量池，*</em>并把里面的符号地址转为真实地址**。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java源代码</span></span><br><span class="line">String s1 = <span class="string">"a"</span>;</span><br><span class="line">String s2 = <span class="string">"b"</span>;</span><br><span class="line">String s3 = <span class="string">"ab"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// javap -v  xxx.class</span></span><br><span class="line">Code:</span><br><span class="line">      stack=<span class="number">2</span>, locals=<span class="number">1</span>, args_size=<span class="number">1</span></span><br><span class="line">         <span class="number">0</span>: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">         <span class="number">4</span>: aload_0</span><br><span class="line">         5: ldc           #2                  // String a</span><br><span class="line">         7: putfield      #3                  // Field s1:Ljava/lang/String;</span><br><span class="line">        <span class="number">10</span>: aload_0</span><br><span class="line">        11: ldc           #4                  // String b</span><br><span class="line">        13: putfield      #5                  // Field s2:Ljava/lang/String;</span><br><span class="line">        <span class="number">16</span>: aload_0</span><br><span class="line">        17: ldc           #6                  // String ab</span><br><span class="line">        19: putfield      #7                  // Field s3:Ljava/lang/String;</span><br><span class="line">        <span class="number">22</span>: <span class="keyword">return</span></span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line <span class="number">10</span>: <span class="number">0</span></span><br><span class="line">        line <span class="number">12</span>: <span class="number">4</span></span><br><span class="line">        line <span class="number">13</span>: <span class="number">10</span></span><br><span class="line">        line <span class="number">14</span>: <span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-StringTable"><a href="#3-StringTable" class="headerlink" title="3. StringTable"></a>3. StringTable</h1><h2 id="3-1-面试题"><a href="#3-1-面试题" class="headerlink" title="3.1 面试题"></a>3.1 面试题</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String s1 = <span class="string">"a"</span>;</span><br><span class="line">    String s2 = <span class="string">"b"</span>;</span><br><span class="line">    String s3 = <span class="string">"a"</span> + <span class="string">"b"</span>;</span><br><span class="line">    String s4 = s1 + s2;</span><br><span class="line">    String s5 = <span class="string">"ab"</span>;</span><br><span class="line">    String s6 = s4.intern();</span><br><span class="line">    <span class="comment">// 问</span></span><br><span class="line">    System.out.println(s3 == s4);</span><br><span class="line">    System.out.println(s3 == s5);</span><br><span class="line">    System.out.println(s3 == s6);</span><br><span class="line">    String x2 = <span class="keyword">new</span> String(<span class="string">"c"</span>) + <span class="keyword">new</span> String(<span class="string">"d"</span>);</span><br><span class="line">    String x1 = <span class="string">"cd"</span>;</span><br><span class="line">    x2.intern();</span><br><span class="line">    <span class="comment">// 问，如果调换了【最后两行代码】的位置呢，如果是jdk1.6呢</span></span><br><span class="line">    System.out.println(x1 == x2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-StringTable特性"><a href="#3-2-StringTable特性" class="headerlink" title="3.2 StringTable特性"></a>3.2 StringTable特性</h2><ul>
+<li><p><code>StringTable</code>是<code>HashTable</code>实现。</p>
+</li>
+<li><p>常量池中的字符串仅是符号，第一次用到是才变为对象。（懒加载）</p>
+</li>
+<li><p>利用串池机制来避免字符串重复创建。</p>
+</li>
+<li><p>字符串变量拼接的原理是<code>StringBuilder</code>。</p>
+</li>
+<li><p>字符串常量拼接的原理是编译优化。（编译时拼接后的常量已经确定）</p>
+</li>
+<li><p>可以利用<code>inter()</code>方法主动将串池中还没有的字符串对象放入串池</p>
+<ul>
+<li>1.8将这些字符串对象尝试放入串池，如果串池中存在，则不会放入，如果不存在则放入串池，并把<strong>串池</strong>中的对象返回。</li>
+<li>1.6将这些字符串对象尝试放入串池，如果串池中存在，则不会放入，如果不存在，<strong>将此对象复制一份</strong>，放入串池，并把<strong>串池</strong>中的对象返回。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-3-面试题分析"><a href="#3-3-面试题分析" class="headerlink" title="3.3 面试题分析"></a>3.3 面试题分析</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"a"</span>;	<span class="comment">// ["a"] </span></span><br><span class="line">String s2 = <span class="string">"b"</span>;	<span class="comment">// ["a","b"]</span></span><br><span class="line">String s3 = <span class="string">"a"</span> + <span class="string">"b"</span>;	<span class="comment">// ["a","b","ab"]</span></span><br><span class="line"><span class="comment">//(new StringBuilder("a")+new StringBuilder("b")).toString(),toString()也是调用new String()</span></span><br><span class="line">String s4 = s1 + s2;	<span class="comment">// 在堆中</span></span><br><span class="line">String s5 = <span class="string">"ab"</span>;	<span class="comment">// 常量池中已经存在，直接获取</span></span><br><span class="line"><span class="comment">// 1.8，将堆中"ab"尝试放入StringTable中，此时已经存在，不存入，返回值是StringTable中"ab"</span></span><br><span class="line">String s6 = s4.intern();	<span class="comment">// 常量池</span></span><br><span class="line"><span class="comment">// 问</span></span><br><span class="line">System.out.println(s3 == s4);	<span class="comment">// s3在常量池，s4在堆中 false</span></span><br><span class="line">System.out.println(s3 == s5);	<span class="comment">// 都在常量池 true</span></span><br><span class="line">System.out.println(s3 == s6);	<span class="comment">// 都在常量池 true</span></span><br><span class="line">String x2 = <span class="keyword">new</span> String(<span class="string">"c"</span>) + <span class="keyword">new</span> String(<span class="string">"d"</span>);	<span class="comment">// 堆中</span></span><br><span class="line">String x1 = <span class="string">"cd"</span>; <span class="comment">// 常量池中</span></span><br><span class="line">x2.intern();	<span class="comment">//常量池中存在，不放入，并且没有获取返回值 x2还在堆中</span></span><br><span class="line"><span class="comment">// 问，如果调换了【最后两行代码】的位置呢，如果是jdk1.6呢</span></span><br><span class="line">System.out.println(x1 == x2);	<span class="comment">// x1在常量池中，x2在堆中 false</span></span><br><span class="line"><span class="comment">// jdk1.6是复制一份对象，把复制的对象存入常量池</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/06/%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tomcat集群和调优</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -207,9 +353,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
