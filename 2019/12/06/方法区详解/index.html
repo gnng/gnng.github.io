@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="人生点滴">
 <meta property="og:description" content="三思而后行，思危、思退、思变。 1. 方法区1.1 概念 方法区里面的数据对线程共享。  它存储每个类的结构，如运行时常量池、字段和方法数据，以及方法和构造函数的代码，包括在类和实例初始化以及接口初始化中使用的特殊方法。  方法区在JVM启动时创建，在逻辑上是堆的一部分，但是虚拟机实现中可以不对该区域进行垃圾回收和内存压缩。  方法区可以是固定大小，也可以通过参数进行配置，内存可以是不连续的。">
 <meta property="og:locale" content="ch">
-<meta property="og:updated_time" content="2019-12-06T02:55:36.132Z">
+<meta property="og:updated_time" content="2019-12-06T05:37:44.229Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="人生点滴" type="application/atom+xml">
@@ -205,7 +205,7 @@
 </li>
 <li><p>字符串常量拼接的原理是编译优化。（编译时拼接后的常量已经确定）</p>
 </li>
-<li><p>可以利用<code>inter()</code>方法主动将串池中还没有的字符串对象放入串池</p>
+<li><p>可以利用<code>intern()</code>方法主动将串池中还没有的字符串对象放入串池</p>
 <ul>
 <li>1.8将这些字符串对象尝试放入串池，如果串池中存在，则不会放入，如果不存在则放入串池，并把<strong>串池</strong>中的对象返回。</li>
 <li>1.6将这些字符串对象尝试放入串池，如果串池中存在，则不会放入，如果不存在，<strong>将此对象复制一份</strong>，放入串池，并把<strong>串池</strong>中的对象返回。</li>
