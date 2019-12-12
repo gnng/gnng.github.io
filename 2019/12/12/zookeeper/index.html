@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="人生点滴">
 <meta property="og:description" content="1. Zookeeper概念​    zookeeper是一个开源的分布式协调服务，提供分布式数据一致性解决方案，分布式应用程序可以实现数据发布订阅、负载均衡、命名服务、集群管理分布式锁、分布式队列等功能。 2. 分布式系统相关概念2.1 架构演进​    单机–&amp;gt;集群（多机相同服务）–&amp;gt;分布式（拆分成不同服务，部署在多机）">
 <meta property="og:locale" content="ch">
-<meta property="og:updated_time" content="2019-12-12T12:04:36.954Z">
+<meta property="og:updated_time" content="2019-12-12T14:48:53.674Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="人生点滴" type="application/atom+xml">
@@ -341,7 +341,8 @@
 <li><a href="https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html" target="_blank" rel="noopener">https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html</a></li>
 <li><a href="https://blog.csdn.net/cndmss/article/details/80220273（伪集群可以配置多个cfg文件，启动时以cfg区分启动）" target="_blank" rel="noopener">https://blog.csdn.net/cndmss/article/details/80220273（伪集群可以配置多个cfg文件，启动时以cfg区分启动）</a></li>
 </ul>
-<h1 id="4-源码分析"><a href="#4-源码分析" class="headerlink" title="4. 源码分析"></a>4. 源码分析</h1><ul>
+<h1 id="4-ZK-API"><a href="#4-ZK-API" class="headerlink" title="4. ZK-API"></a>4. ZK-API</h1><p>​    <a href="https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html" target="_blank" rel="noopener">https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html</a></p>
+<h1 id="5-源码分析"><a href="#5-源码分析" class="headerlink" title="5. 源码分析"></a>5. 源码分析</h1><ul>
 <li><p>源码来源：github    <a href="https://github.com/apache/zookeeper" target="_blank" rel="noopener">https://github.com/apache/zookeeper</a></p>
 </li>
 <li><p>参考博客：<a href="https://www.jianshu.com/p/e78e17fb16a9" target="_blank" rel="noopener">https://www.jianshu.com/p/e78e17fb16a9</a></p>
@@ -366,7 +367,7 @@
 <p><a href="https://www.jianshu.com/p/e74e1d01d070" target="_blank" rel="noopener">https://www.jianshu.com/p/e74e1d01d070</a></p>
 </li>
 </ul>
-<h1 id="5-zookeeper的应用场景"><a href="#5-zookeeper的应用场景" class="headerlink" title="5. zookeeper的应用场景"></a>5. zookeeper的应用场景</h1><ul>
+<h1 id="6-zookeeper的应用场景"><a href="#6-zookeeper的应用场景" class="headerlink" title="6. zookeeper的应用场景"></a>6. zookeeper的应用场景</h1><ul>
 <li><p>配置中心</p>
 <ul>
 <li>将系统的一些通用的全局配置，例如机器列表配置，运行时开关配置，数据库配置信息统一集中存储，让集群所有节点共享配置信息。系统启动的时候，首先从配置中西读取配置信息，进行初始化。传统的模式是将配置信息存储在本地文件和内存中，一旦机器规模更大，配置变更更频繁，配置信息的维护成本较高，使用zk可以解决该问题。</li>
