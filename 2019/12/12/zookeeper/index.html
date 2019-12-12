@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 人生点滴</title>
+  <title>zookeeper | 人生点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="人生点滴">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="1. Zookeeper概念 zookeeper是一个开源的分布式协调服务，提供分布式数据一致性解决方案，分布式应用程序可以实现数据发布订阅、负载均衡、命名服务、集群管理分布式锁、分布式队列等功能。  2. 分布式系统相关概念2.1 架构演进​    单机–&amp;gt;集群（多机相同服务）–&amp;gt;分布式（拆分成不同服务，部署在多机）">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zookeeper">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;zookeeper&#x2F;index.html">
 <meta property="og:site_name" content="人生点滴">
-<meta property="og:description" content="技术成长">
+<meta property="og:description" content="1. Zookeeper概念 zookeeper是一个开源的分布式协调服务，提供分布式数据一致性解决方案，分布式应用程序可以实现数据发布订阅、负载均衡、命名服务、集群管理分布式锁、分布式队列等功能。  2. 分布式系统相关概念2.1 架构演进​    单机–&amp;gt;集群（多机相同服务）–&amp;gt;分布式（拆分成不同服务，部署在多机）">
 <meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-12-12T11:56:29.120Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="人生点滴" type="application/atom+xml">
@@ -131,37 +133,305 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-zookeeper" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      zookeeper
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2019/12/12/zookeeper/" class="archive-article-date">
   	<time datetime="2019-12-12T11:55:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/12/zookeeper/">zookeeper</a>
-    </h1>
-  
+         
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-Zookeeper概念"><a href="#1-Zookeeper概念" class="headerlink" title="1. Zookeeper概念"></a>1. Zookeeper概念</h1><ul>
+<li>zookeeper是一个开源的分布式协调服务，提供分布式数据一致性解决方案，分布式应用程序可以实现数据发布订阅、负载均衡、命名服务、集群管理分布式锁、分布式队列等功能。</li>
+</ul>
+<h1 id="2-分布式系统相关概念"><a href="#2-分布式系统相关概念" class="headerlink" title="2. 分布式系统相关概念"></a>2. 分布式系统相关概念</h1><h2 id="2-1-架构演进"><a href="#2-1-架构演进" class="headerlink" title="2.1 架构演进"></a>2.1 架构演进</h2><p>​    单机–&gt;集群（多机相同服务）–&gt;分布式（拆分成不同服务，部署在多机）</p>
+<a id="more"></a> 
 
-        <div class="article-info info-on-right">
-          
+<h2 id="2-2-分布式数据一致性"><a href="#2-2-分布式数据一致性" class="headerlink" title="2.2 分布式数据一致性"></a>2.2 分布式数据一致性</h2><ul>
+<li>强一致性：如果数据不一致，不对外提供服务，保证用户读取的数据始终一致性。<ul>
+<li>同步阻塞。</li>
+<li>数据库锁可以实现。</li>
+</ul>
+</li>
+<li>最终一致性：数据最终同步即可，无实时要求。</li>
+</ul>
+<h2 id="2-3-CAP原则"><a href="#2-3-CAP原则" class="headerlink" title="2.3 CAP原则"></a>2.3 CAP原则</h2><ul>
+<li>一致性（Consistency）：客户端知道一系列的操作都会同时生效。</li>
+<li>可用性（Availability）：每个操作都必须有可预期的响应结果。</li>
+<li>分区容错性（Partition tolerance）：即使出现单个组件不可以，操作仍然可以完成。</li>
+</ul>
+<h2 id="2-4-一致性协议"><a href="#2-4-一致性协议" class="headerlink" title="2.4 一致性协议"></a>2.4 一致性协议</h2><h3 id="2-4-1-2PC二阶段提交"><a href="#2-4-1-2PC二阶段提交" class="headerlink" title="2.4.1 2PC二阶段提交"></a>2.4.1 2PC二阶段提交</h3><ul>
+<li>角色<ul>
+<li>参与者：sql执行者</li>
+<li>协调者：事务管理者</li>
+</ul>
+</li>
+<li>过程<ul>
+<li>第一阶段<ol>
+<li>协调者想各个参与者发送事务内容，询问是否可以执行事务操作，并等待反馈。</li>
+<li>各参与者执行事务操作。</li>
+<li>反馈给协调者，事务能否执行。</li>
+</ol>
+</li>
+<li>第二阶段：如果协调者收到所有参与者的反馈，则执行事务提交，否则中断事务提交<ul>
+<li>事务提交    <ol>
+<li>协调者向各个参与者发送commit请求。</li>
+<li>参与者接收到commit请求后，提交事务，并向协调者反馈成功结果。</li>
+<li>协调者接收所有反馈后，提交自身事务，完成事务提交。</li>
+</ol>
+</li>
+<li>中断事务<ol>
+<li>协调者想各参与者发送回滚请求。</li>
+<li>参与者执行回滚操作，并反馈给协调者。</li>
+<li>协调者接收反馈结果，执行自身事务回滚操作。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>问题<ul>
+<li>同步阻塞<ul>
+<li>所有参与事务提交的节点都处于同步阻塞状态。</li>
+</ul>
+</li>
+<li>单点问题<ul>
+<li>协调者是单机的，出现故障无法保证数据一致性。</li>
+</ul>
+</li>
+<li>脑裂导致数据不一致<ul>
+<li>如果节点出现网络分区，某些参与者未收到commit指令，则可能出现部分节点提交了事务，未收到commit的节点没有执行事务提交，导致数据不一致。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-2-3PC三阶段提交"><a href="#2-4-2-3PC三阶段提交" class="headerlink" title="2.4.2 3PC三阶段提交"></a>2.4.2 3PC三阶段提交</h3><ul>
+<li>CanCommit<ol>
+<li>事务询问</li>
+<li>各参与者节点反馈事务询问的响应。</li>
+</ol>
+</li>
+<li>PreCommit<ul>
+<li>执行事务预提交<ol>
+<li>发送预提交请求，协调者向参与者发送PreCommit请求，进入prepared阶段。</li>
+<li>各节点接收PreCommit请求，执行事务，并反馈事务的执行结果。</li>
+</ol>
+</li>
+<li>中断事务：任意一个节点反馈响应NO，或者协调者等待超时后，中断事务。<ol>
+<li>协调者向参与者发送abort请求。</li>
+<li>参与者收到abort请求，或者等待超时时间后，中断事务。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>DoCommit<ul>
+<li>提交事务<ol>
+<li>协调者向参与者发送doCommit请求。</li>
+<li>各参与者接收doCommit请求，执行事务提交，并反馈结果。</li>
+<li>协调者接收所有反馈，提交自身事务。</li>
+</ol>
+</li>
+<li>中断事务<ol>
+<li>参与者接收abort请求后，执行事务回滚，并向协调者反馈ack。</li>
+<li>协调者接收回滚ack后，执行自身事务回滚。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>注意：相对于2PC，由于引入超时时间，解决了单点问题和阻塞问题，无法解决网络分区问题。</li>
+</ul>
+<h3 id="2-4-3-Paxos算法"><a href="#2-4-3-Paxos算法" class="headerlink" title="2.4.3 Paxos算法"></a>2.4.3 Paxos算法</h3><ul>
+<li>概念：该算法是一种提高分布式系统容错性的一致性算法，解决了3PC中的网络分区问题，paxos算法可以在节点失效、网络分区、网络延迟等各种异常情况下保证所有节点都处于同一状态，同时paxos也引入了“过半”理念，即少数服从多数原则。</li>
+<li>三个版本<ul>
+<li>Basic Paxos</li>
+<li>Multi Paxos</li>
+<li>Fast Paxos</li>
+</ul>
+</li>
+<li>四种角色<ul>
+<li>client：系统外部角色，请求发起者，不参与投票。</li>
+<li>proposer：提案发起者。</li>
+<li>acceptor：提案表决者，是否接受该提案，超过一半以上的acceptor接受了该提案，该提案才被认为被“选定”。</li>
+<li>learners：提案学习者，当提案被选定后吗，其同步执行提案，不参与决策。</li>
+</ul>
+</li>
+<li>两个阶段<ul>
+<li>prepare阶段<ol>
+<li>proposer提出一个提案，编号为N，发给<strong>半数以上</strong>的acceptor。prepare(N）</li>
+<li>每个acceptor都了保存自己的接收的最大提案编号maxN，当acceptor收到prepare(N)请求时，会比较N与maxN的值。若N&lt;maxN，则表示提案已过时，拒绝prepare(N)请求；若N&gt;=maxN，则接受提案，并将该acceptor曾经接受过的编号最大的提案proposal(myid,maxN,value)反馈给proposer。其中myid表示acceptor的标识ID，maxN表示接受过的最大提案编号，value表示提案内容。若当前acceptor未曾接收任何提议，会将proposal(myid,null,null)反馈给proposer。</li>
+</ol>
+</li>
+<li>accept阶段<ol>
+<li>如果一个proposer接收到<strong>半数以上</strong>的acceptor反馈后，proposer将真正的proposal(N,value)发送给所有acceptor。</li>
+<li>acceptor接收到proposal(N,value)后，如果该acceptor没有对编号大于N的prepare请求做出过响应，它就直接接受该提案；如果N小于acceptor的maxN以及其响应的prepare请求的N时，则拒绝。</li>
+<li>当proposer没有收到过半响应后，它会重新进入第一阶段，递增提案号，重新提出proposer请求。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5-ZAB协议"><a href="#2-5-ZAB协议" class="headerlink" title="2.5 ZAB协议"></a>2.5 ZAB协议</h2><p>​    由于Paxos算法实现比较困难，存在活锁和全序问题（无法保证两次最终提交的顺序），所有zookeeper没有使用paxos算法作为一致性协议，而是使用了ZAB协议。</p>
+<ul>
+<li>ZAB（zookeeper atomic broadcast）：是一种支持崩溃恢复的原子广播协议，基于Fast Paxos实现。</li>
+<li>三种角色（为了保证单点问题，zk采用集群方式保证zk高可用）<ul>
+<li>leader：负责处理集群的写请求，并发起投票，只有超过半数的节点同意后才会提交写请求。</li>
+<li>follower：处理读请求，响应结果。转发写请求到leader。在选举leader过程中参与投票。</li>
+<li>observer：没有投票权的follower，协助follower处理读请求。</li>
+</ul>
+</li>
+<li>请求原理<ul>
+<li>Zookeeper使用单一主进程Leader用于处理客户端所有事务请求，即写请求。当服务器数据发生变更时，集群采用ZAB原子广播协议模式，以事务提交proposal的形式广播到所有的副本进程，每个事务分配一个全局的递增事务编号xid。</li>
+<li>若客户端的请求是读请求时，则接受请求的节点直接根据自己保存的数据响应。如是写请求，且当前节点不是leader，那么该节点将请求转发给leader，leader会以提案的方式广播此写请求，如果超过半数的follower节点同意写请求，则该写请求就会提交。leader会通知所有订阅者同步数据。</li>
+</ul>
+</li>
+<li>两种模式<ul>
+<li>恢复模式：当服务启动或者leader崩溃时，zk进入恢复状态，选举leader，leader选出后，会完成leader和其它follower的数据同步，当大多数follower完成同步后，恢复模式结束。</li>
+<li>广播模式：一旦leader和大多数follower进行了状态同步后，此时进入广播模式。如果有新的服务器加入，会自动从leader中同步数据。leader在接收到客户端请求后，会生成事务提案广播给其他机器，有超过半数的follower同意提案后，提交事务。</li>
+</ul>
+</li>
+<li>zxid：zxid是64位长度的Long类型数据，其中高32为纪元epoch，低32位表示事务标识xid。<ul>
+<li>每个leader都会具有不同的epoch值，表示一个纪元，每当新的选举开始时都会生成一个新的epoch，新的leader产生之后会更新所有的zkServer的zxid的epoch。</li>
+<li>xid为依次递增的事务序号。</li>
+</ul>
+</li>
+<li>leader选举算法<ul>
+<li>启动过程<ol>
+<li>每个server各自己投票并发出一个投票给集群中其他节点。</li>
+<li>收到各自服务器投票后，判断该投票的有效性，比如是否为本轮投票，是否为<code>LOOKING</code>状态。</li>
+<li>处理投票，比较别人的投票和自己的投票，（myid,zxid）比较规则zxid&gt;myid，“取大原则”（首先比较zxid，值最大的为leader，如果值相等，再比较myid，myid最大的为leader）。</li>
+<li>统计是否超过半数节点的接收相同投票。</li>
+<li>确认leader，改变服务器状态。</li>
+<li>leader选出后，新加入的server只能以follower身份加入集群中。</li>
+</ol>
+</li>
+<li>崩溃恢复过程<ul>
+<li>leader挂掉之后，集群中follower节点会将状态从<code>FOLLOWING</code>变为<code>LOOKING</code>,重新进行leader选举，同启动过程。</li>
+</ul>
+</li>
+<li>消息广播算法：一旦进入广播模式，集群中非leader接收到写请求后会先事务请求转发给leader，leader为其生成对应的事务提案proposal，并发送给集群中其他节点，半数同意则提交事务。<ol>
+<li>leader接收到转发的请求后，会生成一个全局唯一的自增标识zxid。</li>
+<li>leader发给follower的提案是有序的，leader会创建一个FIFO队列（先进先出），将提案顺序放入队列中发送给follower。</li>
+<li>follower接收到提案后，会比较提案的zxid和本地事务日志最大zxid，若提案的zxid大于本地事务zxid，将该提案记录到本地事务日志中，反馈ack给leader，否则拒绝。</li>
+<li>leader接收到过半ack后，leader向所有follower发送事务提交请求，通知follower执行本地事务。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-Zookeeper集群搭建"><a href="#3-Zookeeper集群搭建" class="headerlink" title="3. Zookeeper集群搭建"></a>3. Zookeeper集群搭建</h1><ul>
+<li>略，网上很多资料。</li>
+<li><a href="https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html" target="_blank" rel="noopener">https://zookeeper.apache.org/doc/r3.5.6/zookeeperStarted.html</a></li>
+<li><a href="https://blog.csdn.net/cndmss/article/details/80220273（伪集群可以配置多个cfg文件，启动时以cfg区分启动）" target="_blank" rel="noopener">https://blog.csdn.net/cndmss/article/details/80220273（伪集群可以配置多个cfg文件，启动时以cfg区分启动）</a></li>
+</ul>
+<h1 id="4-源码分析"><a href="#4-源码分析" class="headerlink" title="4. 源码分析"></a>4. 源码分析</h1><ul>
+<li><p>源码来源：github    <a href="https://github.com/apache/zookeeper" target="_blank" rel="noopener">https://github.com/apache/zookeeper</a></p>
+</li>
+<li><p>参考博客：<a href="https://www.jianshu.com/p/e78e17fb16a9" target="_blank" rel="noopener">https://www.jianshu.com/p/e78e17fb16a9</a></p>
+</li>
+<li><p>启动类<code>QuorumPeerMain</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// zkServer.sh脚本中设置了主启动类QuorumPeerMain</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// QuorumPeerMain#main()-&gt;initializeAndRun()-&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initializeAndRun</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ConfigException, IOException, AdminServerException </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    QuorumPeerConfig config = <span class="keyword">new</span> QuorumPeerConfig();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (args.length == <span class="number">1</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 解析zoo.conf配置文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        config.parse(args[<span class="number">0</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// Start and schedule the the purge task</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    DatadirCleanupManager purgeMgr = <span class="keyword">new</span> DatadirCleanupManager(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        config.getDataDir(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        config.getDataLogDir(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        config.getSnapRetainCount(),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        config.getPurgeInterval());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    purgeMgr.start();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 集群启动</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (args.length == <span class="number">1</span> &amp;&amp; config.isDistributed()) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        runFromConfig(config);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 单机启动</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        LOG.warn(<span class="string">"Either no config or no quorum defined in config, running in standalone mode"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// there is only server in the quorum -- run as standalone</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        ZooKeeperServerMain.main(args);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>单机启动<code>ZooKeeperServerMain</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ZooKeeperServerMain#main()-&gt;initializeAndRun()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initializeAndRun</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ConfigException, IOException, AdminServerException </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">     <span class="keyword">try</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">         <span class="comment">// 日志管理</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">         ManagedUtil.registerLog4jMBeans();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">     &#125; <span class="keyword">catch</span> (JMException e) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">         LOG.warn(<span class="string">"Unable to register log4j JMX control"</span>, e);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">     &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">     ServerConfig config = <span class="keyword">new</span> ServerConfig();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">     <span class="keyword">if</span> (args.length == <span class="number">1</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">         <span class="comment">// 将zoo.cfg解析好的数据封装到ServerConfig中（properties方式解析）</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">         config.parse(args[<span class="number">0</span>]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">     &#125; <span class="keyword">else</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">         config.parse(args);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">     &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">     <span class="comment">// 启动zookeeper</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">     runFromConfig(config);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"> &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// runFromConfig()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// Start Admin server  启动jetty服务器</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">adminServer = AdminServerFactory.createAdminServer();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">adminServer.setZooKeeperServer(zkServer);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">adminServer.start();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> needStartZKServer = <span class="keyword">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (config.getClientPortAddress() != <span class="keyword">null</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    cnxnFactory = ServerCnxnFactory.createFactory();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    cnxnFactory.configure(config.getClientPortAddress(), config.getMaxClientCnxns(), config.getClientPortListenBacklog(), <span class="keyword">false</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 启动zk</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    cnxnFactory.startup(zkServer);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// zkServer has been started. So we don't need to start it again in secureCnxnFactory.</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    needStartZKServer = <span class="keyword">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// ServerCnxnFactory默认NIO实现NIOServerCnxnFactory</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// NIOServerCnxnFactory#startup()-&gt;ZooKeeperServer#startup()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">startup</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (sessionTracker == <span class="keyword">null</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">        createSessionTracker();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 创建会话管理</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">    startSessionTracker();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 初始zk请求处理链</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">    setupRequestProcessors();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 当request&gt;maxRequests,请求限流</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">    startRequestThrottler();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 注册JMX服务</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">    registerJMX();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 启动JVM暂停监控</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">    startJvmPauseMonitor();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 注册监控指标</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">    registerMetrics();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 更改状态</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">    setState(State.RUNNING);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 获取请求地址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">    requestPathMetricsCollector.start();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 获取本地会话</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">    localSessionEnabled = sessionTracker.isLocalSessionsEnabled();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 通知其他阻塞线程释放锁</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">    notifyAll();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<p>​    <strong>没人深入往下看，zk源码的重点在于leader的选举流程</strong></p>
+</li>
+<li><p>集群启动 <code>QuorumPeerMain#runFromConfig()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前面部分跟单机启动类似</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//QuorumPeer#start()-&gt;run()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (!getView().containsKey(myid)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"My id "</span> + myid + <span class="string">" not in the peer list"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 恢复本地数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    loadDataBase();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 启动cnxnFactory线程</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    startServerCnxnFactory();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">try</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        adminServer.start();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#125; <span class="keyword">catch</span> (AdminServerException e) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        LOG.warn(<span class="string">"Problem starting AdminServer"</span>, e);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        System.out.println(e);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 启动leader选举</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    startLeaderElection();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    startJvmPauseMonitor();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">super</span>.start();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// QuorumPeer#startLeaderElection()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">startLeaderElection</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">try</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (getPeerState() == ServerState.LOOKING) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">// 获取当前节点的最大zxid，当前Epoch存入Vote中</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">            currentVote = <span class="keyword">new</span> Vote(myid, getLastLoggedZxid(), getCurrentEpoch());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        RuntimeException re = <span class="keyword">new</span> RuntimeException(e.getMessage());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">        re.setStackTrace(e.getStackTrace());</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">throw</span> re;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 获取当前选举算法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.electionAlg = createElectionAlgorithm(electionType);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//QuorumPeer#run() 搜索 Main loop ，该循环是主要方法，可惜目前看不明白，找了下网上大致的处理流程</span></span></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/64f6e8124625" target="_blank" rel="noopener">https://www.jianshu.com/p/64f6e8124625</a></p>
+<p><a href="https://www.jianshu.com/p/e74e1d01d070" target="_blank" rel="noopener">https://www.jianshu.com/p/e74e1d01d070</a></p>
+</li>
+</ul>
+<h1 id="5-zookeeper的应用场景"><a href="#5-zookeeper的应用场景" class="headerlink" title="5. zookeeper的应用场景"></a>5. zookeeper的应用场景</h1><ul>
+<li><p>配置中心</p>
+<ul>
+<li>将系统的一些通用的全局配置，例如机器列表配置，运行时开关配置，数据库配置信息统一集中存储，让集群所有节点共享配置信息。系统启动的时候，首先从配置中西读取配置信息，进行初始化。传统的模式是将配置信息存储在本地文件和内存中，一旦机器规模更大，配置变更更频繁，配置信息的维护成本较高，使用zk可以解决该问题。</li>
+<li>将配置信息存在zk的某个节点中，同时给该节点注册一个数据变更的watch监听，一旦节点的数据发生变化，所有订阅该节点的客户端都可以获取数据变更通知。</li>
+</ul>
+</li>
+<li><p>负载均衡</p>
+<ul>
+<li>建立server节点，并建立监听器监视server节点的子节点的状态（用于在服务器增添时及时同步当前集群中服务器列表）。在每个服务启动时，在server节点下建立具体服务器地址的子节点，并在对应子节点下存入服务器的相关信息。</li>
+<li>zk服务器上可以获取当前集群中的服务器列表及相关信息，可以自定义负载均衡算法，在每个请求过来时从zk服务器中读取当前集群服务器列表，根据算法选出其中一个服务器处理请求。</li>
+<li>zk-&gt;server-&gt;127.0.0.1;127.0.0.2;</li>
+</ul>
+</li>
+<li><p>命名服务</p>
+<ul>
+<li>命名服务是分布式系统的基本功能之一，被命名的实体通常可以是集群中的机器、提供的服务地址或远程对象等。</li>
+<li>命名服务就是通过一个资源引用的方式来实现对资源的定位和使用，在分布式环境中，上层应用仅仅需要一个全局唯一名称，就像数据库中的主键。</li>
+<li>在zk中通过创建顺序节点可以实现，所有客户端都会根据自己的任务类型来创建一个顺序节点。</li>
+<li>节点创建完成后，creat()接口会返回一个完整的几点名称，凭借type类型和节点名获取全局唯一ID。/job/type1/job01</li>
+</ul>
+</li>
+<li><p>DNS服务</p>
+<ul>
+<li><p>域名配置</p>
+<p>​    分布式应用中，每个应用都需要分配域名，日常开发中，通过本地host来绑定域名解析，开发阶段可以随时更改host来修改域名和IP映射。但是如果应用的机器规模达到一定程度后，需要频繁更新域名时，需要在大规模的集群中变更，无法保证实时性。可以在zk中创建一个节点来进行域名配置。</p>
+</li>
+<li><p>域名解析</p>
+<p>​    应用解析时，需要先从zk域名节点中获取域名和IP映射以及端口。</p>
+</li>
+<li><p>域名变更</p>
+<p>​    每个应用都会向对应的域名节点注册一个数据变更的watch监听，一旦监听的域名节点数据发生变化，zk会向所有订阅的客户端发送域名变更通知。</p>
+</li>
+</ul>
+</li>
+<li><p>集群管理</p>
+<p>​    zk集群管理主要利用其watch监控和临时节点来实现。</p>
+<ul>
+<li>机器上线：新增机器时，将Agent部署到新增机器上，当Agent部署启动时回向zk指定节点下创建一个临时节点。创建完成后，当关注的节点zookeeper/machine下的子节点新加入新的节点或删除都会发送通知，这样对机器的上下线进行监控。</li>
+<li>机器监控：在机器运行过程中，Agent会定时将主机的运行状态信息写入到/machine/hostn主节点中，监控中心通过订阅这些节点的数据变化来获取主机的运行信息。</li>
+</ul>
+</li>
+<li><p>分布式锁</p>
+<ul>
+<li>数据库实现：新增分布式锁表，通过是否存在记录完成分布式锁。</li>
+<li>redis实现：setnx指令或者redisson来实现。</li>
+<li>zk实现：通过watch和临时顺序节点（序号最小的节点上锁）实现，或者curator实现。</li>
+</ul>
+</li>
+<li><p>分布式队列</p>
+<ul>
+<li>FIFO，先入先出</li>
+<li>创建顺序临时子节点，比较自己节点是否为序号最小节点。如果不是，如果不是等待其他节点出列，在序号最小节点注册watch，出列后，通知其余节点，重复操作。</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -173,214 +443,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/12/zookeeper/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/06/%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-12-06T02:54:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/06/%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">方法区详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/06/%E6%96%B9%E6%B3%95%E5%8C%BA%E8%AF%A6%E8%A7%A3/">方法区详解</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-poost">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/" class="archive-article-date">
-  	<time datetime="2019-12-04T11:43:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/Tomcat%E9%9B%86%E7%BE%A4%E5%92%8C%E8%B0%83%E4%BC%98/">Tomcat集群和调优</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-poost">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/12/03/Tomcat%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-12-03T13:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/03/Tomcat%E6%80%BB%E7%BB%93/">Tomcat总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/18/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2019-11-18T11:57:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/18/Integer%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2019-11-18T10:43:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/Integer%E7%9B%B8%E5%85%B3/">Integer面试题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -417,8 +579,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
